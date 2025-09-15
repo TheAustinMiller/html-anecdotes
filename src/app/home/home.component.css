@@ -1,0 +1,88 @@
+html {
+    background: #121212;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 1rem;
+    color: #ffffff;
+}
+
+.dashboard {
+  max-width: 700px;
+  margin: 2rem auto;
+  font-family: 'Helvetica', sans-serif;
+  color: #e0e0e0;
+}
+
+/* Post row */
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.25rem;
+  background: #1e1e1e;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.post-header:hover {
+  background: #2a2a2a;
+}
+
+/* Title/date styling */
+.post-header strong {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.post-header small {
+  color: #9e9e9e;
+  font-size: 0.85rem;
+}
+
+.intro {
+  text-align: center;
+  margin: 3rem 1rem;
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* spacing between image, title, quote */
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+/* Profile pic styling */
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* makes it circular */
+  object-fit: cover;
+  border: 3px solid #ff7300; /* accent border */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Header title */
+.intro h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* Quote styling */
+.intro .quote {
+  font-style: italic;
+  color: #b0b0b0;
+  max-width: 400px;
+  line-height: 1.5;
+  position: relative;
+  font-size: 1.1rem;
+}

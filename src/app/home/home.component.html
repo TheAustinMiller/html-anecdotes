@@ -1,0 +1,16 @@
+<div class="intro">
+  <img src="assets/anecdotesProfilePic.png" alt="Anecdotes Logo" class="logo">
+  <h1>Anecdotes</h1>
+  <p class="quote">Some thoughts.</p>
+</div>
+
+
+<div class="dashboard" *ngFor="let post of posts">
+    <div class="post-header" (click)="toggle(post.id)">
+        <strong>{{ post.title }}</strong> — {{ post.id | date:'medium' }}
+    </div>
+
+    <div *ngIf="expandedId === post.id" class="post-body">
+        {{ post.content }}
+    </div>
+</div>
