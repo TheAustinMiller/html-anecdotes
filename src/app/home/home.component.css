@@ -1,88 +1,149 @@
-html {
-    background: #121212;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-h1 {
-    padding: 1rem;
-    color: #ffffff;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', monospace;
+  background-color: #C0C0C0; 
+  color: #000000; 
+height: 100%;
 }
 
 .dashboard {
-  max-width: 700px;
+  width: 90%;
+  max-width: 800px;
   margin: 2rem auto;
-  font-family: 'Helvetica', sans-serif;
-  color: #e0e0e0;
+  background-color: #E0E0E0; 
+  border: 2px solid #808080;
+  padding: 1rem;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #808080;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-/* Post row */
 .post-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* title on left, X on right */
   align-items: center;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.25rem;
-  background: #1e1e1e;
-  border-radius: 6px;
+  padding: 4px;
+  background: #c0c0c0;
+  border: 2px solid #808080;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 
-.post-header:hover {
-  background: #2a2a2a;
-}
-
-/* Title/date styling */
-.post-header strong {
-  color: #ffffff;
-  font-size: 1rem;
+.post-title {
+  flex: 1;
+  margin-right: 8px;
 }
 
 .post-header small {
-  color: #9e9e9e;
+  color: #202020;
   font-size: 0.85rem;
+}
+
+.post-body {
+  background-color: #F0F0F0;
+  padding: 0.5rem;
+  border: 2px solid #808080;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #808080;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .intro {
   text-align: center;
-  margin: 3rem 1rem;
-  color: #e0e0e0;
+  margin: 2rem auto;
+  background-color: #E0E0E0;
+  border: 2px solid #808080;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #808080;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem; /* spacing between image, title, quote */
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  gap: 0.5rem;
 }
 
-/* Profile pic styling */
-.logo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%; /* makes it circular */
-  object-fit: cover;
-  border: 3px solid #ff7300; /* accent border */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-
-/* Header title */
 .intro h1 {
-  font-size: 2.5rem;
-  margin: 0;
-  letter-spacing: 1px;
-  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  margin: 0.5rem 0;
+  color: #000000;
 }
 
-/* Quote styling */
-.intro .quote {
+.quote {
   font-style: italic;
-  color: #b0b0b0;
+  color: #202020;
   max-width: 400px;
   line-height: 1.5;
   position: relative;
-  font-size: 1.1rem;
+}
+
+.quote::before,
+.quote::after {
+  content: '"';
+  font-size: 1.2rem;
+  vertical-align: top;
+}
+
+button {
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  padding: 6px 12px;
+  font-family: 'Lucida Console', monospace;
+  cursor: pointer;
+  box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #404040; /* indented by default */
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 2px 2px 0 #fff, -2px -2px 0 #404040; /* looks raised when hovered */
+}
+
+.delete-btn {
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  padding: 0 6px;
+  font-size: 12px;
+  font-family: 'Lucida Console', monospace;
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+  box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #404040;
+}
+
+.delete-btn:hover {
+  background: #ff0000;
+  color: #fff;
+  box-shadow: 2px 2px 0 #fff, -2px -2px 0 #404040;
+}
+
+a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+hr {
+  border: 1px solid #808080;
+  margin: 1rem 0;
+}
+
+.logo {
+  border: 2px solid #808080;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #808080;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0; 
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #C0C0C0;
+  border: 2px solid #808080;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #808080;
+  border: 2px solid #C0C0C0;
 }

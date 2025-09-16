@@ -2,7 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #121212; /* dark base */
-  color: #e0e0e0; /* default text */
-  font-family: 'Helvetica', sans-serif;
+  background: #C0C0C0; 
+  color: #000000; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-y: auto;   
+  overflow-x: hidden; 
 }

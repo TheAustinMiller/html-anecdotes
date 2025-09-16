@@ -1,48 +1,31 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface Post {
   id: number;
   title: string;
   content: string;
+  date: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  private apiUrl = 'http://localhost:3000/api/posts';
 
-  private storageKey = 'localBlogPosts';
-  private posts: Post[] = [];
+  constructor(private http: HttpClient) {}
 
-  constructor() {
-    const saved = localStorage.getItem(this.storageKey);
-    this.posts = saved ? JSON.parse(saved) : [];
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl);
   }
 
-  ngOnInit() {
-  this.posts = this.getPosts().slice().reverse();
+  addPost(post: Post): Observable<Post> {
+    return this.http.post<Post>(this.apiUrl, post);
   }
 
-  clearPosts() {
-    this.posts = [];
-    this.save();
-  }
-
-  getPosts(): Post[] {
-    return this.posts;
-  }
-
-  addPost(title: string, content: string) {
-    const newPost: Post = {
-      id: Date.now(),
-      title,
-      content,
-    };
-    this.posts.unshift(newPost);
-    this.save();
-  }
-
-  private save() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.posts));
+  deletePost(id: number | string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

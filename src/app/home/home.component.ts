@@ -13,15 +13,41 @@ export class HomeComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.posts = this.postService.getPosts();
+    this.loadPosts();
+  }
+
+  loadPosts() {
+    this.postService.getPosts().subscribe(posts => {
+      this.posts = posts;
+    });
+  }
+
+  addPost() {
+    const newPost: Post = {
+      id: Date.now(),
+      title: 'Test Note',
+      content: 'Hello from backend!',
+      date: new Date().toISOString()
+    };
+
+    this.postService.addPost(newPost).subscribe(savedPost => {
+      this.posts.push(savedPost);
+    });
+  }
+
+  deletePost(id: number | string) {
+  this.postService.deletePost(id).subscribe({
+    next: () => {
+      this.posts = this.posts.filter(p => p.id !== id);
+      console.log('Post deleted successfully');
+    },
+    error: (err) => {
+      console.error('Error deleting post', err);
+    }
+  });
   }
 
   toggle(id: number) {
     this.expandedId = this.expandedId === id ? null : id;
-  }
-
-  addDummy() {
-    this.postService.addPost('Test Note', 'Hello from LocalStorage');
-    this.posts = this.postService.getPosts(); 
   }
 }
