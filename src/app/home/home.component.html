@@ -1,21 +1,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-<button (click)="addPost()">Add Test Post</button>
-
 <div class="intro">
-  <img src="assets/anecdotesProfilePic.png" alt="Anecdotes Logo" class="logo">
-  <h1>Anecdotes</h1>
-  <p class="quote">Some thoughts.</p>
+  <img src="assets/logo.png" alt="Anecdotes Logo" height="180px" width="485px" class="logo">
+  <p class="quote">A place for thoughts.</p>
 </div>
 
-<div class="dashboard" *ngFor="let post of posts">
+<div class="create">
+  <div class="create-header" (click)="toggleCreate()">
+    <strong>Create a New Anecdote</strong>
+  </div>
+
+  <div *ngIf="createExpanded" class="create-body">
+    <form #postForm="ngForm" (ngSubmit)="addNewPost(postForm)">
+      <input name="title" type="text" placeholder="Title" [(ngModel)]="newTitle" required>
+      <textarea name="content" placeholder="Your anecdote..." [(ngModel)]="newContent" required></textarea>
+      <button type="submit" class="btn">Add Anecdote</button>
+    </form>
+  </div>
+</div>
+
+<div class="dashboard" *ngFor="let post of posts.slice().reverse()">
   <div class="post-header" (click)="toggle(post.id)">
-  <span class="post-title">
-    <strong>{{ post.title }}</strong> — {{ post.date | date:'medium' }}
-  </span>
-  <button class="delete-btn" (click)="deletePost(post.id); $event.stopPropagation()">X</button>
-</div>
-
+    <span class="post-title">
+      <strong>{{ post.title }}</strong> — {{ post.date | date:'medium' }}
+    </span>
+    <button class="delete-btn" (click)="deletePost(post.id); $event.stopPropagation()">X</button>
+  </div>
 
   <div *ngIf="expandedId === post.id" class="post-body">
     {{ post.content }}
